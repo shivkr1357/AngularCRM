@@ -1,0 +1,39 @@
+<div class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl font-bold mb-4">Clients Management</h2>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="py-2 px-4 text-left">ID</th>
+          <th class="py-2 px-4 text-left">Company Name</th>
+          <th class="py-2 px-4 text-left">Contact Person</th>
+          <th class="py-2 px-4 text-left">Email</th>
+          <th class="py-2 px-4 text-left">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let client of clients"
+          (click)="navigateToClientDetails(client.id)"
+          class="border-t cursor-pointer"
+        >
+          <td class="py-2 px-4">{{ client.id }}</td>
+          <td class="py-2 px-4">{{ client.name }}</td>
+          <td class="py-2 px-4">{{ client.contact }}</td>
+          <td class="py-2 px-4">{{ client.email }}</td>
+          <td class="py-2 px-4">
+            <span
+              class="px-2 py-1 rounded-full text-sm"
+              [ngClass]="{
+                'bg-green-100 text-green-800': client.status === 'Active',
+                'bg-red-100 text-red-800': client.status === 'Inactive'
+              }"
+            >
+              {{ client.status }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
