@@ -1,35 +1,65 @@
 <div
-  class="d-flex justify-center align-center w-64 bg-white border-r shadow-lg p-9 h-full"
+  class="w-64 bg-gradient-to-b from-slate-900 to-slate-950 text-white h-full"
 >
-  <h2 class="text-2xl font-bold mb-6">CRM</h2>
-  <nav class="d-flex flex-column align-center">
-    <ul class="d-flex flex-column align-center space-y-4">
-      <li>
-        <a routerLink="/dashboard" class="text-gray-700 hover:text-blue-500"
-          >Dashboard</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/clients"
-          class="text-gray-700 hover:text-blue-500"
-          >Clients</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/leads"
-          class="text-gray-700 hover:text-blue-500"
-          >Leads</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/dashboard/settings"
-          class="text-gray-700 hover:text-blue-500"
-          >Settings</a
-        >
-      </li>
-    </ul>
-  </nav>
+  <div class="p-6">
+    <h2 class="text-2xl font-bold mb-8 text-slate-100">CRM</h2>
+    <nav>
+      <ul class="space-y-1">
+        <li class="w-full">
+          <a
+            routerLink="/dashboard"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
+          >
+            <span class="material-icons">dashboard</span>
+            Dashboard
+          </a>
+        </li>
+        <li class="w-full">
+          <a
+            routerLink="/dashboard/agencies"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
+          >
+            <span class="material-icons">business</span>
+            Agencies
+          </a>
+        </li>
+        <li class="w-full">
+          <a
+            routerLink="/dashboard/policies"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
+          >
+            <span class="material-icons">description</span>
+            Policies
+          </a>
+        </li>
+        <li class="w-full">
+          <a
+            routerLink="/dashboard/clients"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
+          >
+            <span class="material-icons">people</span>
+            Clients
+          </a>
+        </li>
+        <li class="w-full">
+          <a
+            routerLink="/dashboard/leads"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
+          >
+            <span class="material-icons">trending_up</span>
+            Leads
+          </a>
+        </li>
+        <li class="w-full">
+          <a
+            routerLink="/dashboard/settings"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
+          >
+            <span class="material-icons">settings</span>
+            Settings
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>

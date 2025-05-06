@@ -4,6 +4,10 @@ import { LeadsComponent } from './components/leads/leads.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { ClientDetailsComponent } from './components/client-details/client-details.component';
 import { LeadDetailsComponent } from './components/lead-details/lead-details.component';
+import { AgenciesComponent } from './components/agencies/agencies.component';
+import { AgencyDetailsComponent } from './components/agency-details/agency-details.component';
+import { PoliciesComponent } from './components/policies/policies.component';
+import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -11,7 +15,6 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'leads', pathMatch: 'full' },
       {
         path: 'leads',
         component: LeadsComponent,
@@ -27,6 +30,22 @@ export const routes: Routes = [
       {
         path: 'leads/:id',
         component: LeadDetailsComponent,
+      },
+      {
+        path: 'agencies',
+        component: AgenciesComponent,
+      },
+      {
+        path: 'agencies/:id',
+        component: AgencyDetailsComponent,
+      },
+      {
+        path: 'policies',
+        component: PoliciesComponent,
+      },
+      {
+        path: 'policies/:id',
+        component: PolicyDetailsComponent,
       },
     ],
   },

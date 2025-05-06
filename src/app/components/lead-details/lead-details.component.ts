@@ -3,6 +3,7 @@ import { LeadService } from '../../services/lead.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Lead } from '../../interfaces/lead.interface';
+
 @Component({
   selector: 'app-lead-details',
   imports: [CommonModule],
@@ -12,6 +13,8 @@ import { Lead } from '../../interfaces/lead.interface';
 export class LeadDetailsComponent implements OnInit {
   private id: number = 0;
   lead: Lead | undefined;
+  isLoading = false;
+  error: string | null = null;
 
   constructor(
     private leadService: LeadService,

@@ -1,3 +1,163 @@
-<div class="p-4">
-  <router-outlet></router-outlet>
+<div class="p-6 bg-slate-50">
+  <!-- Charts Section - Only shown on main dashboard route -->
+  <div *ngIf="showCharts" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Line Chart -->
+    <div
+      class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow"
+    >
+      <canvas
+        baseChart
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="'line'"
+      >
+      </canvas>
+    </div>
+
+    <!-- Pie Chart -->
+    <div
+      class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow h-[300px]"
+    >
+      <canvas
+        baseChart
+        [data]="pieChartData"
+        [options]="pieChartOptions"
+        [type]="'pie'"
+      >
+      </canvas>
+    </div>
+
+    <!-- Bar Chart -->
+    <div
+      class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow"
+    >
+      <canvas
+        baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [type]="'bar'"
+      >
+      </canvas>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-2 gap-4">
+      <div
+        class="bg-gradient-to-br from-slate-700 to-slate-800 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-white"
+      >
+        <h3 class="text-lg font-semibold text-slate-200">Total Leads</h3>
+        <p class="text-3xl font-bold">450</p>
+      </div>
+      <div
+        class="bg-gradient-to-br from-slate-600 to-slate-700 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-white"
+      >
+        <h3 class="text-lg font-semibold text-slate-200">Active Clients</h3>
+        <p class="text-3xl font-bold">128</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaderboard Table -->
+  <div *ngIf="showCharts" class="mt-6">
+    <div
+      class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden"
+    >
+      <div class="p-4 border-b border-slate-200">
+        <h2 class="text-lg font-semibold text-slate-800">
+          Top Performing Agents
+        </h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-slate-50 text-slate-600 text-sm">
+              <th class="px-6 py-3 text-left font-medium">Rank</th>
+              <th class="px-6 py-3 text-left font-medium">Agent</th>
+              <th class="px-6 py-3 text-left font-medium">Agency</th>
+              <th class="px-6 py-3 text-left font-medium">Leads</th>
+              <th class="px-6 py-3 text-left font-medium">Conversion</th>
+              <th class="px-6 py-3 text-left font-medium">Revenue</th>
+              <th class="px-6 py-3 text-left font-medium">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="px-6 py-4 text-slate-600">#1</td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Sarah+Wilson&background=475569&color=fff"
+                    alt="Sarah Wilson"
+                    class="w-8 h-8 rounded-full"
+                  />
+                  <span class="font-medium text-slate-800">Sarah Wilson</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-slate-600">Alpha Insurance</td>
+              <td class="px-6 py-4 text-slate-600">245</td>
+              <td class="px-6 py-4 text-slate-600">68%</td>
+              <td class="px-6 py-4 text-slate-600">$124,500</td>
+              <td class="px-6 py-4">
+                <span
+                  class="px-2 py-1 text-xs font-medium rounded-full bg-emerald-100 text-emerald-700"
+                  >Active</span
+                >
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-6 py-4 text-slate-600">#2</td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Michael+Brown&background=475569&color=fff"
+                    alt="Michael Brown"
+                    class="w-8 h-8 rounded-full"
+                  />
+                  <span class="font-medium text-slate-800">Michael Brown</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-slate-600">Beta Solutions</td>
+              <td class="px-6 py-4 text-slate-600">198</td>
+              <td class="px-6 py-4 text-slate-600">62%</td>
+              <td class="px-6 py-4 text-slate-600">$98,750</td>
+              <td class="px-6 py-4">
+                <span
+                  class="px-2 py-1 text-xs font-medium rounded-full bg-emerald-100 text-emerald-700"
+                  >Active</span
+                >
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-6 py-4 text-slate-600">#3</td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Emma+Davis&background=475569&color=fff"
+                    alt="Emma Davis"
+                    class="w-8 h-8 rounded-full"
+                  />
+                  <span class="font-medium text-slate-800">Emma Davis</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-slate-600">Gamma Group</td>
+              <td class="px-6 py-4 text-slate-600">176</td>
+              <td class="px-6 py-4 text-slate-600">58%</td>
+              <td class="px-6 py-4 text-slate-600">$87,200</td>
+              <td class="px-6 py-4">
+                <span
+                  class="px-2 py-1 text-xs font-medium rounded-full bg-amber-100 text-amber-700"
+                  >On Leave</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Router Outlet for nested routes -->
+  <div [class.mt-6]="showCharts">
+    <router-outlet></router-outlet>
+  </div>
 </div>
