@@ -11,42 +11,13 @@ import { PolicyDetailsComponent } from './components/policy-details/policy-detai
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    children: [
-      {
-        path: 'leads',
-        component: LeadsComponent,
-      },
-      {
-        path: 'clients',
-        component: ClientsComponent,
-      },
-      {
-        path: 'clients/:id',
-        component: ClientDetailsComponent,
-      },
-      {
-        path: 'leads/:id',
-        component: LeadDetailsComponent,
-      },
-      {
-        path: 'agencies',
-        component: AgenciesComponent,
-      },
-      {
-        path: 'agencies/:id',
-        component: AgencyDetailsComponent,
-      },
-      {
-        path: 'policies',
-        component: PoliciesComponent,
-      },
-      {
-        path: 'policies/:id',
-        component: PolicyDetailsComponent,
-      },
-    ],
-  },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'leads', component: LeadsComponent },
+  { path: 'leads/:id', component: LeadDetailsComponent },
+  { path: 'clients', component: ClientsComponent },
+  { path: 'clients/:id', component: ClientDetailsComponent },
+  { path: 'agencies', component: AgenciesComponent },
+  { path: 'agencies/:id', component: AgencyDetailsComponent },
+  { path: 'policies', component: PoliciesComponent },
+  { path: 'policies/:id', component: PolicyDetailsComponent },
 ];

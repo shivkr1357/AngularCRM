@@ -1,1 +1,12 @@
-<p>agencies works!</p>
+<div class="p-6">
+  <app-table
+    [columns]="columns"
+    [data]="agencyData"
+    [title]="'Agencies'"
+    [currentPage]="currentPage"
+    [pageSize]="pageSize"
+    (pageChange)="onPageChange($event)"
+    (rowClick)="onRowClick($event)"
+  >
+  </app-table>
+</div>

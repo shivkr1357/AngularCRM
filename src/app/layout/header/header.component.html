@@ -2,7 +2,10 @@
   <div class="container mx-auto px-4 py-3">
     <div class="flex items-center justify-between">
       <div class="flex items-center space-x-4">
-        <button class="hover:bg-slate-700 p-2 rounded-lg transition-colors">
+        <button
+          class="hover:bg-slate-700 p-2 rounded-lg transition-colors"
+          (click)="goBack()"
+        >
           <span class="material-icons">arrow_back</span>
         </button>
         <h1 class="text-xl font-semibold">Dashboard</h1>

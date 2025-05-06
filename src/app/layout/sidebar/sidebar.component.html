@@ -7,7 +7,9 @@
       <ul class="space-y-1">
         <li class="w-full">
           <a
-            routerLink="/dashboard"
+            [routerLink]="['/dashboard']"
+            routerLinkActive="bg-slate-100 text-slate-900"
+            [routerLinkActiveOptions]="{ exact: true }"
             class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
           >
             <span class="material-icons">dashboard</span>
@@ -16,7 +18,8 @@
         </li>
         <li class="w-full">
           <a
-            routerLink="/dashboard/agencies"
+            [routerLink]="['/agencies']"
+            routerLinkActive="bg-slate-100 text-slate-900"
             class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
           >
             <span class="material-icons">business</span>
@@ -25,7 +28,8 @@
         </li>
         <li class="w-full">
           <a
-            routerLink="/dashboard/policies"
+            [routerLink]="['/policies']"
+            routerLinkActive="bg-slate-100 text-slate-900"
             class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
           >
             <span class="material-icons">description</span>
@@ -34,7 +38,8 @@
         </li>
         <li class="w-full">
           <a
-            routerLink="/dashboard/clients"
+            [routerLink]="['/clients']"
+            routerLinkActive="bg-slate-100 text-slate-900"
             class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
           >
             <span class="material-icons">people</span>
@@ -43,7 +48,8 @@
         </li>
         <li class="w-full">
           <a
-            routerLink="/dashboard/leads"
+            [routerLink]="['/leads']"
+            routerLinkActive="bg-slate-100 text-slate-900"
             class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
           >
             <span class="material-icons">trending_up</span>
@@ -52,7 +58,8 @@
         </li>
         <li class="w-full">
           <a
-            routerLink="/dashboard/settings"
+            [routerLink]="['/settings']"
+            routerLinkActive="bg-slate-100 text-slate-900"
             class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-slate-800/50 text-slate-300 hover:text-white"
           >
             <span class="material-icons">settings</span>

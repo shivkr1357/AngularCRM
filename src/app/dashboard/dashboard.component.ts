@@ -3,16 +3,43 @@ import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { TableComponent } from '../shared/components/table/table.component';
+import { TableColumn } from '../shared/components/table/table.interface';
+import { DashboardService } from '../services/dashboard.service';
+import { Leaderboard } from '../interfaces/leaderboard.interface';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, NgChartsModule, RouterOutlet],
+  imports: [CommonModule, NgChartsModule, RouterOutlet, TableComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
+  leaderboardData: Leaderboard[] = [];
   showCharts = true;
+  currentPage = 1;
+  pageSize = 5;
+
+  // Table Configuration
+  leaderboardColumns: TableColumn[] = [
+    { key: 'rank', label: 'Rank', type: 'text' },
+    { key: 'image', label: 'Agent', type: 'image' },
+    { key: 'agency', label: 'Agency', type: 'text' },
+    { key: 'leads', label: 'Leads', type: 'number' },
+    { key: 'conversion', label: 'Conversion', type: 'text' },
+    { key: 'revenue', label: 'Revenue', type: 'currency' },
+    {
+      key: 'status',
+      label: 'Status',
+      type: 'badge',
+      badgeConfig: {
+        active: { bg: 'bg-emerald-100', text: 'text-emerald-700' },
+        inactive: { bg: 'bg-amber-100', text: 'text-amber-700' },
+        'on leave': { bg: 'bg-amber-100', text: 'text-amber-700' },
+      },
+    },
+  ];
 
   // Line Chart
   lineChartData = {
@@ -88,18 +115,28 @@ export class DashboardComponent implements OnInit {
     },
   };
 
-  constructor(private router: Router) {
-    // Subscribe to router events to detect route changes
+  constructor(
+    private leaderboardService: DashboardService,
+    private router: Router
+  ) {
+    this.leaderboardData = this.leaderboardService.getAllLeaderboardData();
+
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        // Show charts only on the main dashboard route
         this.showCharts = event.url === '/dashboard';
       });
   }
 
   ngOnInit(): void {
-    // Set initial state based on current route
     this.showCharts = this.router.url === '/dashboard';
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+  }
+
+  onRowClick(row: any): void {
+    console.log('Clicked row:', row);
   }
 }
