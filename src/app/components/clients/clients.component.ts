@@ -30,7 +30,9 @@ export class ClientsComponent implements OnInit {
       badgeConfig: {
         active: { bg: 'bg-green-100', text: 'text-green-700' },
         inactive: { bg: 'bg-red-100', text: 'text-red-700' },
-        pending: { bg: 'bg-yellow-100', text: 'text-yellow-700' },
+        Active: { bg: 'bg-green-100', text: 'text-green-700' },
+        Inactive: { bg: 'bg-red-100', text: 'text-red-700' },
+        Pending: { bg: 'bg-yellow-100', text: 'text-yellow-700' },
       },
     },
     { key: 'createdAt', label: 'Created At', type: 'text' },

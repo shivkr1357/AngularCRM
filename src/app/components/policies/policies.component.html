@@ -1,1 +1,12 @@
-<p>policies works!</p>
+<div class="p-6">
+  <app-table
+    [columns]="columns"
+    [data]="policyData"
+    [title]="'Policies'"
+    [currentPage]="currentPage"
+    [pageSize]="pageSize"
+    (pageChange)="onPageChange($event)"
+    (rowClick)="onRowClick($event)"
+  >
+  </app-table>
+</div>

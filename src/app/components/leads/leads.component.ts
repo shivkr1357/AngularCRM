@@ -31,13 +31,14 @@ export class LeadsComponent {
       badgeConfig: {
         active: { bg: 'bg-green-100', text: 'text-green-700' },
         inactive: { bg: 'bg-red-100', text: 'text-red-700' },
-        new: { bg: 'bg-blue-100', text: 'text-blue-700' },
-        contacted: { bg: 'bg-yellow-100', text: 'text-yellow-700' },
-        qualified: { bg: 'bg-green-100', text: 'text-green-700' },
-        lost: { bg: 'bg-red-100', text: 'text-red-700' },
+        Active: { bg: 'bg-green-100', text: 'text-green-700' },
+        Inactive: { bg: 'bg-red-100', text: 'text-red-700' },
+        New: { bg: 'bg-blue-100', text: 'text-blue-700' },
+        Contacted: { bg: 'bg-yellow-100', text: 'text-yellow-700' },
+        Qualified: { bg: 'bg-green-100', text: 'text-green-700' },
+        Lost: { bg: 'bg-red-100', text: 'text-red-700' },
       },
     },
-    { key: 'createdAt', label: 'Created At', type: 'text' },
   ];
 
   constructor(private leadService: LeadService, private router: Router) {

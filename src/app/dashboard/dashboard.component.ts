@@ -7,6 +7,21 @@ import { TableComponent } from '../shared/components/table/table.component';
 import { TableColumn } from '../shared/components/table/table.interface';
 import { DashboardService } from '../services/dashboard.service';
 import { Leaderboard } from '../interfaces/leaderboard.interface';
+import {
+  Chart,
+  ChartConfiguration,
+  ChartType,
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  PieController,
+  ArcElement,
+  BarController,
+  BarElement,
+} from 'chart.js';
+import { registerables } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,8 +56,37 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
+  constructor(
+    private dashboardService: DashboardService,
+    private router: Router
+  ) {
+    // Register Chart.js components
+    registerables.forEach((component) => {
+      Chart.register(component);
+    });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        this.showCharts = event.url === '/dashboard';
+      });
+  }
+
+  ngOnInit(): void {
+    this.showCharts = this.router.url === '/dashboard';
+    this.leaderboardData = this.dashboardService.getAllLeaderboardData();
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+  }
+
+  onRowClick(row: any): void {
+    console.log('Clicked row:', row);
+  }
+
   // Line Chart
-  lineChartData = {
+  lineChartData: ChartConfiguration<'line'>['data'] = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     datasets: [
       {
@@ -55,7 +99,7 @@ export class DashboardComponent implements OnInit {
       },
     ],
   };
-  lineChartOptions = {
+  lineChartOptions: ChartConfiguration<'line'>['options'] = {
     responsive: true,
     plugins: {
       legend: { display: true },
@@ -65,9 +109,10 @@ export class DashboardComponent implements OnInit {
       },
     },
   };
+  lineChartType = 'line' as const;
 
   // Pie Chart
-  pieChartData = {
+  pieChartData: ChartConfiguration<'pie'>['data'] = {
     labels: ['Active', 'Pending', 'Closed'],
     datasets: [
       {
@@ -80,7 +125,7 @@ export class DashboardComponent implements OnInit {
       },
     ],
   };
-  pieChartOptions = {
+  pieChartOptions: ChartConfiguration<'pie'>['options'] = {
     responsive: true,
     plugins: {
       legend: { display: true },
@@ -90,9 +135,10 @@ export class DashboardComponent implements OnInit {
       },
     },
   };
+  pieChartType = 'pie' as const;
 
   // Bar Chart
-  barChartData = {
+  barChartData: ChartConfiguration<'bar'>['data'] = {
     labels: ['Agency 1', 'Agency 2', 'Agency 3', 'Agency 4', 'Agency 5'],
     datasets: [
       {
@@ -104,7 +150,7 @@ export class DashboardComponent implements OnInit {
       },
     ],
   };
-  barChartOptions = {
+  barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
     plugins: {
       legend: { display: true },
@@ -114,29 +160,5 @@ export class DashboardComponent implements OnInit {
       },
     },
   };
-
-  constructor(
-    private leaderboardService: DashboardService,
-    private router: Router
-  ) {
-    this.leaderboardData = this.leaderboardService.getAllLeaderboardData();
-
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
-        this.showCharts = event.url === '/dashboard';
-      });
-  }
-
-  ngOnInit(): void {
-    this.showCharts = this.router.url === '/dashboard';
-  }
-
-  onPageChange(page: number): void {
-    this.currentPage = page;
-  }
-
-  onRowClick(row: any): void {
-    console.log('Clicked row:', row);
-  }
+  barChartType = 'bar' as const;
 }

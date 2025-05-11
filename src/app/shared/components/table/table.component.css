@@ -1,0 +1,28 @@
+/* Hide scrollbar by default */
+.scrollbar-hide-on-leave {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide-on-leave::-webkit-scrollbar {
+  height: 0px;
+  transition: height 0.3s;
+}
+
+/* Show scrollbar on hover */
+.scrollbar-hide-on-leave:hover {
+  scrollbar-width: thin; /* Firefox */
+}
+
+.scrollbar-hide-on-leave:hover::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-hide-on-leave::-webkit-scrollbar-track {
+  background: #f1f5f9; /* Tailwind slate-100 */
+}
+
+.scrollbar-hide-on-leave::-webkit-scrollbar-thumb {
+  background-color: #94a3b8; /* Tailwind slate-400 */
+  border-radius: 6px;
+}
